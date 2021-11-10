@@ -1,1 +1,63 @@
+import java.awt.*;
+import java.awt.event.*;
+class Main {
+    public static void main(String[] args){
+        MyFrame win = new MyFrame("Window");
+    }
+}
+class MyFrame extends Frame implements WindowListener {
+    public MyFrame(String title){
+        super(title);
+        setSize(300,300);
+        setLocation(100, 100);
+        addWindowListener(this);
+        setBackground(new Color(79, 169, 214));
+        setLayout(null);
+        add(new ExitButton("Exit"));
+        add(new RunButton("Run"));
+        setVisible(true);
+    }
+    public void windowOpened(WindowEvent e){
+    }
 
+    public void windowClosing(WindowEvent e){
+        System.exit(0);
+    }
+
+    public void windowClosed(WindowEvent e){
+    }
+    
+    public void windowIconified(WindowEvent e){
+    }
+
+    public void windowDeiconified(WindowEvent e){
+    }
+
+    public void windowActivated(WindowEvent e){
+    }
+  
+    public void windowDeactivated(WindowEvent e){
+    }
+}
+class ExitButton extends Button implements ActionListener {
+    public ExitButton(String title){
+        super(title);
+        setSize(100,100);
+        setLocation(150,80);
+        addActionListener(this);
+    }
+    public void actionPerformed(ActionEvent ae){
+        System.exit(0);
+    }
+}
+class RunButton extends Button implements ActionListener {
+    public RunButton(String title){
+        super(title);
+        setSize(100,100);
+        setLocation(50,80);
+        addActionListener(this);
+    }
+    public void actionPerformed(ActionEvent ae){
+        setLocation((int)(Math.random()*200), (int)(Math.random()*200));
+    }
+}
